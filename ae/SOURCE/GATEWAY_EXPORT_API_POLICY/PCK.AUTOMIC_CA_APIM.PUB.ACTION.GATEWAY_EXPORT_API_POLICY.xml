@@ -347,7 +347,49 @@
 <OSCRI/>
 </POST_SCRIPT>
 <DOCU_Docu state="1" type="text">
-<DOC/>
+<DOC><![CDATA[= Action name =
+PCK.AUTOMIC_CA_APIM.PUB.ACTION.GATEWAY_EXPORT_API_POLICY
+
+= General description =
+This action is used to export API Policy from Policy manager so that it can be deployed to a different environment or can migrate from one gateway to another.
+
+
+= Failure Conditions =
+-It might be possible that the provided policy id does not exist.
+
+= Inputs =
+- Export Path:                            Provide full target path to export APIM Policy. Default if temporary folder on agent.(E.g. D:\Automic\APIM)
+- ID*:                                    Provide policy ID to be exported.(E.g. 82edd5f264e39dfc5fe0f39d49e7bdee)
+- Export Type*:                           Provide type of bundling for given Policy export.(E.g. NewOrExisting/NewOrUpdate/Ignore)
+- Map By*:                                Specify default mapping for given Policy export.(E.g. id/name/guid)
+- L7 Key Passphrase:                      Provide base64 encoded passphrase to use for the encryption key when encrypting secrets.
+- Include Request Folder:                 Specify whether to include the folder in the bundle or just it's contents.
+- Export Gateway Rest                     Specify whether if Gateway Rest Management Service is also exported.
+  Management Service :
+- Include Dependencies:                   Specify whether if dependencies are also included.
+- Encrypt Secrets:                        Specify whether if secret values are encrypted.
+- Encrypt with Cluster                    Specify whether if Cluster Passphrase is used for encrypting secrets.
+  Passphrase :
+- Include Only Service Policy:            Specify whether if only service policy is included in the export.
+- Include Only Dependencies:              Specify whether if only dependencies are included in the export.       
+
+Note: Include Only Service Policy and Include Only Dependencies both can not be true at a same time.
+
+= Behavior =
+This action will export policy on the specified path, Default if temporary folder on agent. And the name of file will be "exported_api_policy-{policyID}". It will return a xml file.
+
+=Return Value=
+(none)
+
+= Outputs =
+* Return code is 0 in case of success.
+* Return code is non-zero in case of failure.
+
+= Rollback =
+(none)
+
+= Logging =
+AE logs will be displayed in the AE report.]]></DOC>
 </DOCU_Docu>
 </JOBS_CIT>
 </uc-export>
