@@ -1,0 +1,5 @@
+*** Variables ***
+#---- AE Actions-------------------------
+${_CA_APIM_ACTION}    PCK.AUTOMIC_CA_APIM.PUB.ACTION.GATEWAY_EXPORT_API_POLICY
+
+

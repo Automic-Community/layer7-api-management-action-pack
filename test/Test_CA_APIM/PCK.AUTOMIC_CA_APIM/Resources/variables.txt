@@ -1,0 +1,17 @@
+*** Settings ***
+Resource          ../../../Env/default.txt
+
+*** Variables ***
+#---- Promptset Fields --------------------------------------------------------------------------------------
+${Server}     Add Valid Data here
+${Port}           Add Valid Data here
+${Username}       Add Valid Data here
+${Password}       Add Valid Data here
+#----Export Gateway API-------------------------------------------------------------------------------------
+${ID}       Add Valid Data here
+${ExportPath}      Add Valid Data here
+${ExportType}       Add Valid Data here
+${MapBy}        Add Valid Data here
+${L7Key}       Add Valid Data here
+
+

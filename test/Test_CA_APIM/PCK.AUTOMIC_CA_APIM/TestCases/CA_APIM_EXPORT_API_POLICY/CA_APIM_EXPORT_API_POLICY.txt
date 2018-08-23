@@ -1,0 +1,91 @@
+*** Settings ***
+Suite Setup       Startup
+Suite Teardown    Teardown
+Force Tags        CA_APIM_EXPORT_API_POLICY
+Test Template     Export API Policy Job Template
+Library           com.automic.robot.itpa.ItpaLibrary
+Library           String
+Library           DateTime
+Resource          ../../Resources/messages.txt
+Resource          ../../Resources/keywords.txt
+Resource          ../../Resources/variables.txt
+Resource          ../../Resources/actions.txt
+
+*** Test Cases ***    OK_NOK    ID      ExportPath    ExportType       MapBy       L7Key       RequestFolder    ExportGateway     Dependencies     EncryptSecrets    EncryptCluster   OnlyService    OnlyDependencies
+Export API Policy with all valid data
+                      [Tags]    main_scenarios
+                      OK        ${ID}     ${ExportPath}        ${ExportType}    ${MapBy}     ${L7Key}     ${RequestFolder}    ${ExportGateway}     ${Dependencies}     ${EncryptSecrets}     ${EncryptCluster}     ${OnlyService}    ${OnlyDependencies}
+ 
+Export API Policy with invalid ID
+                      OK        Invalid     ${ExportPath}        ${ExportType}    ${MapBy}     ${L7Key}     ${RequestFolder}    ${ExportGateway}     ${Dependencies}     ${EncryptSecrets}     ${EncryptCluster}     ${OnlyService}    ${OnlyDependencies}
+
+Export API Policy with invalid ExportPath
+                      OK        ${ID}      ${ExportPath}       Invalid    ${MapBy}     ${L7Key}     ${RequestFolder}    ${ExportGateway}     ${Dependencies}     ${EncryptSecrets}     ${EncryptCluster}     ${OnlyService}    ${OnlyDependencies}
+
+Export API Policy with invalid MapBy
+                      OK        ${ID}     ${ExportPath}        ${ExportType}    Invalid     ${L7Key}     ${RequestFolder}    ${ExportGateway}     ${Dependencies}     ${EncryptSecrets}     ${EncryptCluster}     ${OnlyService}    ${OnlyDependencies}
+
+Export API Policy with invalid L7Key
+                      OK        ${ID}     ${ExportPath}        ${ExportType}    ${MapBy}      ${L7Key}     ${RequestFolder}      ${ExportGateway}       ${Dependencies}       ${EncryptSecrets}     ${EncryptCluster}     ${OnlyService}    ${OnlyDependencies}
+
+Export API Policy with RequestFolder as NO
+                      OK        ${ID}     ${ExportPath}        ${ExportType}    ${MapBy}      ${L7Key}     NO      ${ExportGateway}       ${Dependencies}       ${EncryptSecrets}     ${EncryptCluster}     ${OnlyService}    ${OnlyDependencies}
+
+Export API Policy with ExportGateway as NO
+                      OK        ${ID}     ${ExportPath}        ${ExportType}    ${MapBy}      ${L7Key}     ${RequestFolder}      NO       ${Dependencies}       ${EncryptSecrets}     ${EncryptCluster}     ${OnlyService}    ${OnlyDependencies}
+
+Export API Policy with Dependencies, EncryptSecrets, Cluster as NO
+                      OK        ${ID}     ${ExportPath}        ${ExportType}    ${MapBy}      ${L7Key}      ${RequestFolder}       ${ExportGateway}       NO       NO     NO     ${OnlyService}    ${OnlyDependencies}
+
+Export API Policy with OnlyService as NO
+                      OK        ${ID}     ${ExportPath}        ${ExportType}    ${MapBy}      ${L7Key}    ${RequestFolder}       ${ExportGateway}     ${Dependencies}    ${EncryptSecrets}     ${EncryptCluster}     NO    ${OnlyDependencies}
+
+Export API Policy with OnlyDependencies as NO
+                      OK        ${ID}     ${ExportPath}        ${ExportType}    ${MapBy}      ${L7Key}     ${RequestFolder}      ${ExportGateway}       ${Dependencies}       ${EncryptSecrets}     ${EncryptCluster}     ${OnlyService}    ${OnlyDependencies}
+
+
+
+*** Keywords ***
+Startup
+    Log    *******Start Test "Export API PolicyJOB"*******
+    Log    *******Connect to AE*******
+    Connect AE
+
+Export API Policy Template
+    [Arguments]    ${OK_NOK}    ${ID}    ${ExportPath}    ${ExportType}    ${MapBy}    ${L7Key}    ${RequestFolder}      ${ExportGateway}     ${Dependencies}     ${EncryptSecrets}    ${EncryptCluster}     ${OnlyService}    ${OnlyDependencies}
+    [Documentation]    This test tests the feature of Export API Policy.
+    ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK. Value of this variable should be OK or NOK.
+    ...    -${ID}: This field specifies policy ID to be exported.
+    ...    -${ExportPath}: This field specifies job name of CA7 job.
+    ...    -${ExportType}: This field specifies  the type of bundling for given Policy export.
+    ...    -${MapBy}: This field specifies the default mapping for given Policy export.
+    ...    -${L7Key}: This field specifies the Provide base64 encoded passphrase to use for the encryption key when encrypting secrets.
+    ...    -${RequestFolder}: This field specifies whether to include the folder in the bundle or just it's contents.
+    ...    -${ExportGateway}: This field specifies whether if Gateway Rest Management Service is also exported.
+    ...    -${Dependencies}: This field specifies whether if dependencies are also included.
+    ...    -${EncryptSecrets}: This field specifies whether if secret values are encrypted.
+    ...    -${EncryptCluster}: This field specifies whether if Cluster Passphrase is used for encrypting secrets.
+    ...    -${OnlyService}: This field specifies whether if only service policy is included in the export.
+    ...    -${OnlyDependencies}: This field specifies if only dependencies are included in the export.
+
+    Generate String
+    Init Action    ${_CA_APIM_ACTION}
+    Connect To CA_APIM
+    Run Keyword If    '${ID}' == 'Invalid'    Action Set    &UC4RB_APIM_POLICY_ID#    ${Generated_Name}_${Time}  ELSE    Action Set    &UC4RB_APIM_POLICY_ID#    ${ID}
+    Run Keyword If    '${ExportPath}' == 'Invalid'    Action Set    &UC4RB_APIM_EXPORT_PATH#    ${Generated_Name}_${Time}   ELSE    Action Set    &UC4RB_APIM_EXPORT_PATH#    ${ExportPath}
+    Run Keyword If    '${ExportType}' == 'Invalid'    Action Set    &UC4RB_APIM_EXPORT_TYPE#    ${Generated_Name}_${Time}   ELSE    Action Set    &UC4RB_APIM_EXPORT_TYPE#   ${ExportType}
+    Run Keyword If    '${MapBy}' == 'Invalid'    Action Set    &UC4RB_APIM_MAP_BY#    ${Generated_Name}_${Time}   ELSE    Action Set    &UC4RB_APIM_MAP_BY#    ${MapBy}
+    Run Keyword If    '${L7Key}' == 'Invalid'    Action Set    &UC4RB_APIM_L7_KEY_PASSPHRASE#    ${Generated_Name}_${Time}   ELSE    Action Set    &UC4RB_APIM_L7_KEY_PASSPHRASE#   ${L7Key}
+    Run Keyword If    '${RequestFolder}'  Action Set    &UC4RB_APIM_INC_REQ_FOLDER#    ${RequestFolder}
+    Run Keyword If    '${ExportGateway}'  Action Set    &UC4RB_APIM_EXPORT_GATEWAY_RMS#    ${ExportGateway}
+    Run Keyword If    '${Dependencies}'   Action Set    &UC4RB_APIM_INC_DEPENDENCIES#    ${Dependencies}
+    Run Keyword If    '${EncryptSecrets}' Action Set    &UC4RB_APIM_ENCRYPT_SECRETS#    ${EncryptSecrets}
+    Run Keyword If    '${EncryptCluster}' Action Set    &UC4RB_APIM_ENC_CLUSTER#    ${EncryptCluster}
+    Run Keyword If    '${OnlyService}'   Action Set    &UC4RB_APIM_ONLY_SERVICE_POLICY#    ${OnlyService}
+    Run Keyword If    '${OnlyDependencies}'   Action Set    &UC4RB_APIM_ONLY_DEPENDENCIES#    ${OnlyDependencies}
+    
+    Action Execute
+    Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success   ELSE    Assert Failure
+
+Teardown
+    Log    *******End Test "Export API Policy"*******
