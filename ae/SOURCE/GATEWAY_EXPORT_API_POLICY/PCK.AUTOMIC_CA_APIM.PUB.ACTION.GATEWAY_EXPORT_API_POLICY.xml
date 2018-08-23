@@ -259,7 +259,7 @@
 :    SET &AGENT_TEMPDIR# = GET_VAR('UC_EX_PATH_TEMP', &OVERWRITE_RA_AGENT#)
 : ENDIF
 
-: SET &UC4RB_TEMP_FILE_PATH# = STR_CAT(&AGENT_TEMPDIR#,"exported_api_policy-&UC4RB_APIM_POLICY_ID#.xml")
+: SET &UC4RB_TEMP_FILE_PATH# = STR_CAT(&AGENT_TEMPDIR#,"policy-&UC4RB_APIM_POLICY_ID#-&$RUNID#.xml")
 
 
 
@@ -358,12 +358,12 @@ This action is used to export API Policy from Policy manager so that it can be d
 -It might be possible that the provided policy id does not exist.
 
 = Inputs =
-- Export Path:                            Provide full target path to export APIM Policy. Default if temporary folder on agent.(E.g. D:\Automic\APIM)
+- Export Path:                            Provide full target path to export APIM Policy. Default if temporary folder on agent. (E.g. D:\Automic\APIM)
 - ID*:                                    Provide policy ID to be exported.(E.g. 82edd5f264e39dfc5fe0f39d49e7bdee)
-- Export Type*:                           Provide type of bundling for given Policy export.(E.g. NewOrExisting/NewOrUpdate/Ignore)
-- Map By*:                                Specify default mapping for given Policy export.(E.g. id/name/guid)
+- Export Type*:                           Provide the type of bundling for given Policy export. (E.g. NewOrExisting/NewOrUpdate/Ignore)
+- Map By*:                                Specify default mapping for given Policy export. (E.g. id/name/guid)
 - L7 Key Passphrase:                      Provide base64 encoded passphrase to use for the encryption key when encrypting secrets.
-- Include Request Folder:                 Specify whether to include the folder in the bundle or just it's contents.
+- Include Request Folder:                 Specify whether to include the folder in the bundle or just its contents.
 - Export Gateway Rest                     Specify whether if Gateway Rest Management Service is also exported.
   Management Service :
 - Include Dependencies:                   Specify whether if dependencies are also included.
@@ -373,10 +373,10 @@ This action is used to export API Policy from Policy manager so that it can be d
 - Include Only Service Policy:            Specify whether if only service policy is included in the export.
 - Include Only Dependencies:              Specify whether if only dependencies are included in the export.       
 
-Note: Include Only Service Policy and Include Only Dependencies both can not be true at a same time.
+Note: Include Only Service Policy and Include Only Dependencies both cannot be true at the same time.
 
 = Behavior =
-This action will export policy on the specified path, Default if temporary folder on agent. And the name of file will be "exported_api_policy-{policyID}". It will return a xml file.
+This action will export policy on the specified path, Default if the temporary folder on agent. And the name of file will be "policy-{policyID}-{runID}". It will return an xml file.
 
 =Return Value=
 (none)
