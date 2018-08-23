@@ -83,7 +83,7 @@
 <component con="0" enc="0" type="2" value="" xmlName="conn_read_timeout"/>
 <component con="0" enc="0" type="2" value="30" xmlName="connectTimeout"/>
 <component con="0" enc="0" type="2" value="" xmlName="curl"/>
-<component con="0" enc="0" type="2" value="" xmlName="file"/>
+<component con="0" enc="0" type="2" value="&amp;UC4RB_TEMP_FILE_PATH#" xmlName="file"/>
 <component con="0" enc="0" type="2" value="&amp;header_param_L7_key_passphrase#" xmlName="header_0_0"/>
 <component con="0" enc="0" type="2" value="&amp;header_value_L7_key_passphrase#" xmlName="header_0_1"/>
 <component con="0" enc="0" type="2" value="false" xmlName="isCurl"/>
@@ -112,11 +112,11 @@
 <component con="0" enc="0" type="2" value="&amp;query_value_only_dependencies#" xmlName="query_8_1"/>
 <component con="0" enc="0" type="2" value="false" xmlName="requestReports"/>
 <component con="0" enc="0" type="2" value="policy/&amp;UC4RB_APIM_POLICY_ID#" xmlName="resource"/>
-<component con="0" enc="0" type="2" value="" xmlName="response_part_0_file"/>
+<component con="0" enc="0" type="2" value="&amp;UC4RB_TEMP_FILE_PATH#" xmlName="response_part_0_file"/>
 <component con="0" enc="0" type="2" value="//*" xmlName="response_part_0_script_0_code_0"/>
 <component con="0" enc="0" type="2" value="XPath" xmlName="response_part_0_script_0_queryType"/>
-<component con="0" enc="0" type="2" value="UC4RB_CA_APIM_EXPORTED_POLICY#" xmlName="response_part_0_script_0_resourceName"/>
-<component con="0" enc="0" type="2" value="variable" xmlName="response_part_0_script_0_saveTo"/>
+<component con="0" enc="0" type="2" value="UC4RB_TEMP_FILE_PATH#" xmlName="response_part_0_script_0_resourceName"/>
+<component con="0" enc="0" type="2" value="file" xmlName="response_part_0_script_0_saveTo"/>
 <component con="0" enc="0" type="2" value="false" xmlName="response_part_0_script_0_useArray"/>
 <component con="0" enc="0" type="2" value="false" xmlName="responseReport"/>
 <component con="0" enc="0" type="2" value="60" xmlName="responseTimeout"/>
@@ -176,7 +176,6 @@
 <PROMPTSET name="PCK.AUTOMIC_CA_APIM.PRV.PROMPTSET.CONNECTION" ontop="1">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_APIM.PRV.PROMPTSET.CONNECTION" prptmode="1">
 <UC4RB_APIM_EXPORT_POLICY_URLs.00 altview="0" haslist="0"/>
-<UC4RB_APIM_SKIP_SSL_VALs.00 altview="0" haslist="0">NO</UC4RB_APIM_SKIP_SSL_VALs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -252,10 +251,24 @@
 <PRE_SCRIPT mode="1" replacementmode="1" state="1">
 <PSCRI><![CDATA[:SET &CONN_ENDPOINT_URL# = &UC4RB_APIM_EXPORT_POLICY_URL#
 :INC PCK.AUTOMIC_RA_REST.PUB.INCLUDE.PREPARE_RA_JOB
-:INC PCK.AUTOMIC_RA_REST.PUB.INCLUDE.SET_CONNECTION_AUTH_BASIC]]></PSCRI>
+:INC PCK.AUTOMIC_RA_REST.PUB.INCLUDE.SET_CONNECTION_AUTH_BASIC
+
+: IF &UC4RB_APIM_EXPORT_PATH# NE ""
+:    SET &AGENT_TEMPDIR# = &UC4RB_APIM_EXPORT_PATH#
+: ELSE
+:    SET &AGENT_TEMPDIR# = GET_VAR('UC_EX_PATH_TEMP', &OVERWRITE_RA_AGENT#)
+: ENDIF
+
+: SET &UC4RB_TEMP_FILE_PATH# = STR_CAT(&AGENT_TEMPDIR#,"exported_api_policy-&UC4RB_APIM_POLICY_ID#.xml")
+
+
+
+:P &UC4RB_TEMP_FILE_PATH#]]></PSCRI>
 </PRE_SCRIPT>
 <SCRIPT mode="1" state="1">
 <MSCRI><![CDATA[ @echo off
+
+
 
 !Check for Include Only Service Policy and Include Only Dependencies
 :SET &COUNT# = 0
@@ -331,7 +344,7 @@
 <LoginFsc/>
 </OUTPUTSCAN>
 <POST_SCRIPT mode="1" replacementmode="1" state="1">
-<OSCRI><![CDATA[: PRINT &UC4RB_CA_APIM_EXPORTED_POLICY#]]></OSCRI>
+<OSCRI/>
 </POST_SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC/>
