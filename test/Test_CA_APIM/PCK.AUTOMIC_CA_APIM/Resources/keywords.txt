@@ -93,7 +93,7 @@ Action Object Variable Should Not Be Found
 
 Assert Success
     Action Report Should Be Found
-    Action Report Should Contain    EXECUTED SUCCESSFULLY
+    Action Report Should Contain    RESTful job complete
     Action Return Status Should Be    ${ENDED_OK}
     Action Return Code Should Be    ${RETURN_CODE_SUCCESS}
 

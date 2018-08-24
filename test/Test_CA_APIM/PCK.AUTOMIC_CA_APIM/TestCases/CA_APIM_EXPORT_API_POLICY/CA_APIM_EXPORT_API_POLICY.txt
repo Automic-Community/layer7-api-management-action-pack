@@ -83,6 +83,8 @@ Export API Policy Job Template
     Action Execute
     Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success
     ...    ELSE    Assert Failure
+    Run Keyword If    '${OK_NOK}' == 'OK'    Action Object Variable Should Be Found    &UC4RB_CA_APIM_POLICY_PATH#
+    ...    ELSE    Action Object Variable Should Not Be Found    &UC4RB_CA_APIM_POLICY_PATH#
 
 Teardown
     Log    *******End Test "Export API Policy"*******
