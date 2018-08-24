@@ -3,15 +3,21 @@ Resource          ../../../Env/default.txt
 
 *** Variables ***
 #---- Promptset Fields --------------------------------------------------------------------------------------
-${Server}     Add Valid Data here
-${Port}           Add Valid Data here
-${Username}       Add Valid Data here
-${Password}       Add Valid Data here
+${Rest_API_URL}    https://vviecentos02:8443/restman/1.0/bundle/
+${Username}       admin
+${Password}       7layer
 #----Export Gateway API-------------------------------------------------------------------------------------
-${ID}       Add Valid Data here
-${ExportPath}      Add Valid Data here
-${ExportType}       Add Valid Data here
-${MapBy}        Add Valid Data here
-${L7Key}       Add Valid Data here
-
-
+${ID}             82edd5f264e39dfc5fe0f39d49e7bdee
+${ExportPath}     D:\
+${ExportType}     NewOrExisting
+${MapBy}          id
+${L7Key}          test
+${RequestFolder}    NO
+${ExportGateway}    NO
+${Dependencies}    NO
+${EncryptSecrets}    NO
+${EncryptCluster}    NO
+${OnlyService}    NO
+${OnlyDependencies}    NO
+${OnlyService1}    YES
+${OnlyDependencies1}    YES
