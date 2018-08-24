@@ -24,7 +24,9 @@
 <HostType/>
 </ATTR_VARA>
 <VARA state="1">
-<Variables/>
+<Variables>
+<row Name="PCK.AUTOMIC_CA_APIM.PUB.ACTION.GATEWAY_EXPORT_API_POLICY/AGENT#" Value="&amp;OVERWRITE_RA_AGENT_PROMPT#" Value1="" Value2="" Value3="" Value4=""/>
+</Variables>
 </VARA>
 <DOCU_Docu state="1" type="text">
 <DOC/>
