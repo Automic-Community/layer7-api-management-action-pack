@@ -2,7 +2,7 @@
 Suite Setup       Startup
 Suite Teardown    Teardown
 Force Tags        CA_APIM_EXPORT_API_POLICY
-Test Template     Export API Policy Job Template
+Test Template     Export Policy Job Template
 Library           com.automic.robot.itpa.ItpaLibrary
 Library           String
 Library           DateTime
@@ -15,6 +15,15 @@ Resource          ../../Resources/actions.txt
 Export API Policy with all valid data
                       [Tags]    main_scenarios
                       OK        ${ID}             ${ExportPath}    ${ExportType}     ${MapBy}     ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService}     ${OnlyDependencies}
+
+Export API Policy with Empty ID
+                      NOK       ${Empty}          ${ExportPath}    ${ExportType}     ${MapBy}     ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService}     ${OnlyDependencies}
+
+Export API Policy with Empty Export path
+                      OK        ${ID}             ${Empty}         ${ExportType}     ${MapBy}     ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService}     ${OnlyDependencies}
+
+Export API Policy with Empty L7Key
+                      OK        ${ID}             ${Empty}         ${ExportType}     ${MapBy}     ${Empty}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService}     ${OnlyDependencies}
 
 Export API Policy with invalid ID
                       NOK       Invalid           ${ExportPath}    ${ExportType}     ${MapBy}     ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService}     ${OnlyDependencies}
@@ -39,11 +48,11 @@ Export API Policy with Yes in both OnlyService and OnlyDependencies
 
 *** Keywords ***
 Startup
-    Log    *******Start Test "Export API PolicyJOB"*******
+    Log    *******Start Test "Export Policy"*******
     Log    *******Connect to AE*******
     Connect AE
 
-Export API Policy Job Template
+Export Policy Job Template
     [Arguments]    ${OK_NOK}    ${ID}    ${ExportPath}    ${ExportType}    ${MapBy}    ${L7Key}
     ...    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService}
     ...    ${OnlyDependencies}
@@ -66,12 +75,9 @@ Export API Policy Job Template
     Connect To CA_APIM
     Run Keyword If    '${ID}' == 'Invalid'    Action Set    &UC4RB_APIM_POLICY_ID#    ${Generated_Name}_${Time}
     ...    ELSE    Action Set    &UC4RB_APIM_POLICY_ID#    ${ID}
-    Run Keyword If    '${ExportPath}' == 'Invalid'    Action Set    &UC4RB_APIM_EXPORT_PATH#    ${Generated_Name}_${Time}
-    ...    ELSE    Action Set    &UC4RB_APIM_EXPORT_PATH#    ${ExportPath}
-    Run Keyword If    '${ExportType}' == 'Invalid'    Action Set    &UC4RB_APIM_EXPORT_TYPE#    ${Generated_Name}_${Time}
-    ...    ELSE    Action Set    &UC4RB_APIM_EXPORT_TYPE#    ${ExportType}
-    Run Keyword If    '${MapBy}' == 'Invalid'    Action Set    &UC4RB_APIM_MAP_BY#    ${Generated_Name}_${Time}
-    ...    ELSE    Action Set    &UC4RB_APIM_MAP_BY#    ${MapBy}
+    Action Set    &UC4RB_APIM_EXPORT_PATH#    ${ExportPath}
+    Action Set    &UC4RB_APIM_EXPORT_TYPE#    ${ExportType}
+    Action Set    &UC4RB_APIM_MAP_BY#    ${MapBy}
     Action Set    &UC4RB_APIM_L7_KEY_PASSPHRASE#    ${L7Key}
     Action Set    &UC4RB_APIM_INC_REQ_FOLDER#    ${RequestFolder}
     Action Set    &UC4RB_APIM_EXPORT_GATEWAY_RMS#    ${ExportGateway}
@@ -87,4 +93,4 @@ Export API Policy Job Template
     ...    ELSE    Action Object Variable Should Not Be Found    &UC4RB_CA_APIM_PLCY_EXPORT_PATH#
 
 Teardown
-    Log    *******End Test "Export API Policy"*******
+    Log    *******End Test "Export Policy"*******
