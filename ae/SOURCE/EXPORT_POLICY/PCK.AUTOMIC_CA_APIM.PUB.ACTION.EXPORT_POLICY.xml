@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBS_CIT AttrType="CIT" name="PCK.AUTOMIC_CA_APIM.PUB.ACTION.EXPORT_POLICY">
+<XHEADER state="1">
+<Title>Export policy</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<OUTPUTREG state="1">
+<FileReg/>
+</OUTPUTREG>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBS state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<HostDst>|&lt;CIT&gt;|HOST</HostDst>
+<HostATTR_Type>CIT</HostATTR_Type>
+<CodeName/>
+<Login/>
+<IntAccount/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<AutoDeactNo>0</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>1</AutoDeactErrorFree>
+<DeactWhen>ANY_OK</DeactWhen>
+<DeactDelay>0</DeactDelay>
+<AutoDeactAlways>0</AutoDeactAlways>
+<AttDialog>0</AttDialog>
+<ActAtRun>1</ActAtRun>
+<Consumption>0</Consumption>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>0</MpElse1>
+<MpElse2>1</MpElse2>
+<TZ/>
+</ATTR_JOBS>
+<ATTR_CIT state="1">
+<OutputDb>1</OutputDb>
+<OutputDbErr>0</OutputDbErr>
+<OutputFile>0</OutputFile>
+<OptReportPLOG>1</OptReportPLOG>
+<RequTaskParams>0</RequTaskParams>
+</ATTR_CIT>
+<CIT state="2">
+<citcont agentname="&lt;CIT&gt;" jobtype="WEBSERVICEREST" text="Web Service Rest">
+<cit cittype="2" icon="" id="" subtype="REST" text="REST Web Service">
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_aws_accesskey"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_aws_secret_accesskey"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_aws_sign_version"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_basic_host"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_basic_password"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_basic_port"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_basic_preemptive"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_basic_realm"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_basic_username"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_method"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_oauth_clientkey"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_oauth_clientsecret"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_oauth_refresh_token"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_oauth_refresh_uri"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_oauth_signature_type"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_oauth_token"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_oauth_token_secret"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_oauth_verifier"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_auth_oauth_version_method"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_connection_timeout"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_endpoint_url"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_follow_redirects"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_from_prompts"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_proxy_auth_method"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_proxy_host"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_proxy_password"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_proxy_port"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_proxy_realm"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_proxy_type"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_proxy_username"/>
+<component con="0" enc="0" type="2" value="" xmlName="conn_read_timeout"/>
+<component con="0" enc="0" type="2" value="30" xmlName="connectTimeout"/>
+<component con="0" enc="0" type="2" value="" xmlName="curl"/>
+<component con="0" enc="0" type="2" value="&amp;UC4RB_CA_APIM_POLICY_PATH#" xmlName="file"/>
+<component con="0" enc="0" type="2" value="L7-key-passphrase" xmlName="header_0_0"/>
+<component con="0" enc="0" type="2" value="&amp;header_value_L7_key_passphrase#" xmlName="header_0_1"/>
+<component con="0" enc="0" type="2" value="false" xmlName="isCurl"/>
+<component con="0" enc="0" type="2" value="false" xmlName="jobHeaders"/>
+<component con="0" enc="0" type="2" value="false" xmlName="jobQuery"/>
+<component con="0" enc="0" type="2" value="GET" xmlName="method"/>
+<component con="0" enc="0" type="2" value="false" xmlName="multiPart"/>
+<component con="0" enc="0" type="2" value="false" xmlName="multiPartResp"/>
+<component con="0" enc="0" type="2" value="defaultAction" xmlName="query_0_0"/>
+<component con="0" enc="0" type="2" value="&amp;query_value_export_type#" xmlName="query_0_1"/>
+<component con="0" enc="0" type="2" value="defaultMapBy" xmlName="query_1_0"/>
+<component con="0" enc="0" type="2" value="&amp;query_value_map_by#" xmlName="query_1_1"/>
+<component con="0" enc="0" type="2" value="includeRequestFolder" xmlName="query_2_0"/>
+<component con="0" enc="0" type="2" value="&amp;query_value_inc_req_folder#" xmlName="query_2_1"/>
+<component con="0" enc="0" type="2" value="exportGatewayRestManagementService" xmlName="query_3_0"/>
+<component con="0" enc="0" type="2" value="&amp;query_value_export_gateway_rms#" xmlName="query_3_1"/>
+<component con="0" enc="0" type="2" value="includeDependencies" xmlName="query_4_0"/>
+<component con="0" enc="0" type="2" value="&amp;query_value_inc_dependencies#" xmlName="query_4_1"/>
+<component con="0" enc="0" type="2" value="encryptSecrets" xmlName="query_5_0"/>
+<component con="0" enc="0" type="2" value="&amp;query_value_encrypt_secrets#" xmlName="query_5_1"/>
+<component con="0" enc="0" type="2" value="encryptUsingClusterPassphrase" xmlName="query_6_0"/>
+<component con="0" enc="0" type="2" value="&amp;query_value_enc_cluster#" xmlName="query_6_1"/>
+<component con="0" enc="0" type="2" value="includeOnlyServicePolicy" xmlName="query_7_0"/>
+<component con="0" enc="0" type="2" value="&amp;query_value_only_srvc_policy#" xmlName="query_7_1"/>
+<component con="0" enc="0" type="2" value="includeOnlyDependencies" xmlName="query_8_0"/>
+<component con="0" enc="0" type="2" value="&amp;query_value_only_dependencies#" xmlName="query_8_1"/>
+<component con="0" enc="0" type="2" value="false" xmlName="requestReports"/>
+<component con="0" enc="0" type="2" value="restman/1.0/bundle/policy/&amp;UC4RB_APIM_POLICY_ID#" xmlName="resource"/>
+<component con="0" enc="0" type="2" value="&amp;UC4RB_CA_APIM_POLICY_PATH#" xmlName="response_part_0_file"/>
+<component con="0" enc="0" type="2" value="//*" xmlName="response_part_0_script_0_code_0"/>
+<component con="0" enc="0" type="2" value="XPath" xmlName="response_part_0_script_0_queryType"/>
+<component con="0" enc="0" type="2" value="UC4RB_CA_APIM_POLICY_PATH#" xmlName="response_part_0_script_0_resourceName"/>
+<component con="0" enc="0" type="2" value="file" xmlName="response_part_0_script_0_saveTo"/>
+<component con="0" enc="0" type="2" value="false" xmlName="response_part_0_script_0_useArray"/>
+<component con="0" enc="0" type="2" value="false" xmlName="responseReport"/>
+<component con="0" enc="0" type="2" value="60" xmlName="responseTimeout"/>
+<component con="0" enc="0" type="2" value="true" xmlName="responseToJobLog"/>
+<component con="1" enc="0" type="2" value="" xmlName="restConnection"/>
+<component con="0" enc="0" type="2" value="false" xmlName="tracePerformance"/>
+<component con="0" enc="0" type="2" value="" xmlName="uriOverride"/>
+</cit>
+<cit cittype="3" icon="" id="" subtype="GENERALJOBPANELDEF" text="General Job Panel"/>
+</citcont>
+</CIT>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>1</Mode>
+</VALUE>
+</node>
+<node content="1" id="PCK.AUTOMIC_CA_APIM.PUB.PROMPTSET.CONNECTION" name="PCK.AUTOMIC_CA_APIM.PUB.PROMPTSET.CONNECTION" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_APIM.PUB.PROMPTSET.CONNECTION" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_APIM.PUB.PROMPTSET.CONNECTION" prptmode="1">
+<UC4RB_APIM_EXPORT_POLICY_URLs.00 altview="0" haslist="0"/>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_RA_REST.PUB.PROMPTSET.CONNECTION_AUTH_BASIC" name="PCK.AUTOMIC_RA_REST.PUB.PROMPTSET.CONNECTION_AUTH_BASIC" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_RA_REST.PUB.PROMPTSET.CONNECTION_AUTH_BASIC" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_RA_REST.PUB.PROMPTSET.CONNECTION_AUTH_BASIC" prptmode="1">
+<CONN_AUTH_BASIC_USERNAMEs.00 altview="0" haslist="0"/>
+<CONN_AUTH_BASIC_PASSWORDs.00 altview="0" haslist="0">--10</CONN_AUTH_BASIC_PASSWORDs.00>
+<CONN_AUTH_BASIC_HOSTs.00 altview="0" haslist="0"/>
+<CONN_AUTH_BASIC_PORTs.00 altview="0" haslist="0">0</CONN_AUTH_BASIC_PORTs.00>
+<CONN_AUTH_BASIC_REALMs.00 altview="0" haslist="0"/>
+<CONN_AUTH_BASIC_PREEMPTIVEs.00 altview="0" haslist="0">YES</CONN_AUTH_BASIC_PREEMPTIVEs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_CA_APIM.PRV.PROMPTSET.EXPORT_POLICY" name="PCK.AUTOMIC_CA_APIM.PRV.PROMPTSET.EXPORT_POLICY" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_APIM.PRV.PROMPTSET.EXPORT_POLICY" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_APIM.PRV.PROMPTSET.EXPORT_POLICY" prptmode="1">
+<UC4RB_APIM_EXPORT_PATHs.00 altview="0" haslist="0"/>
+<UC4RB_APIM_POLICY_IDs.00 altview="0" haslist="0"/>
+<UC4RB_APIM_EXPORT_TYPEs.00 altview="0" haslist="0">NewOrExisting</UC4RB_APIM_EXPORT_TYPEs.00>
+<UC4RB_APIM_MAP_BYs.00 altview="0" haslist="0">ID</UC4RB_APIM_MAP_BYs.00>
+<UC4RB_APIM_L7_KEY_PASSPHRASEs.00 altview="0" haslist="0">--10</UC4RB_APIM_L7_KEY_PASSPHRASEs.00>
+<UC4RB_APIM_INC_REQ_FOLDERs.00 altview="0" haslist="0">NO</UC4RB_APIM_INC_REQ_FOLDERs.00>
+<UC4RB_APIM_EXPORT_GATEWAY_RMSs.00 altview="0" haslist="0">NO</UC4RB_APIM_EXPORT_GATEWAY_RMSs.00>
+<UC4RB_APIM_INC_DEPENDENCIESs.00 altview="0" haslist="0">NO</UC4RB_APIM_INC_DEPENDENCIESs.00>
+<UC4RB_APIM_ENCRYPT_SECRETSs.00 altview="0" haslist="0">NO</UC4RB_APIM_ENCRYPT_SECRETSs.00>
+<UC4RB_APIM_ENC_CLUSTERs.00 altview="0" haslist="0">NO</UC4RB_APIM_ENC_CLUSTERs.00>
+<UC4RB_APIM_ONLY_SERVICE_POLICYs.00 altview="0" haslist="0">NO</UC4RB_APIM_ONLY_SERVICE_POLICYs.00>
+<UC4RB_APIM_ONLY_DEPENDENCIESs.00 altview="0" haslist="0">NO</UC4RB_APIM_ONLY_DEPENDENCIESs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_RA_REST.PUB.PROMPTSET.CONNECTION_PROXY" name="PCK.AUTOMIC_RA_REST.PUB.PROMPTSET.CONNECTION_PROXY" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_RA_REST.PUB.PROMPTSET.CONNECTION_PROXY" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_RA_REST.PUB.PROMPTSET.CONNECTION_PROXY" prptmode="1">
+<CONN_PROXY_TYPEs.00 altview="0" haslist="0">None</CONN_PROXY_TYPEs.00>
+<CONN_PROXY_HOSTs.00 altview="0" haslist="0"/>
+<CONN_PROXY_PORTs.00 altview="0" haslist="0">0</CONN_PROXY_PORTs.00>
+<CONN_PROXY_USERNAMEs.00 altview="0" haslist="0"/>
+<CONN_PROXY_PASSWORDs.00 altview="0" haslist="0">--10</CONN_PROXY_PASSWORDs.00>
+<CONN_PROXY_REALMs.00 altview="0" haslist="0"/>
+<CONN_PROXY_AUTH_METHODs.00 altview="0" haslist="0">None</CONN_PROXY_AUTH_METHODs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_RA_REST.PUB.PROMPTSET.CONNECTION_ADVANCED" name="PCK.AUTOMIC_RA_REST.PUB.PROMPTSET.CONNECTION_ADVANCED" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_RA_REST.PUB.PROMPTSET.CONNECTION_ADVANCED" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_RA_REST.PUB.PROMPTSET.CONNECTION_ADVANCED" prptmode="1">
+<CONN_CONNECTION_TIMEOUTs.00 altview="0" haslist="0">30</CONN_CONNECTION_TIMEOUTs.00>
+<CONN_READ_TIMEOUTs.00 altview="0" haslist="0">60</CONN_READ_TIMEOUTs.00>
+<CONN_FOLLOW_REDIRECTSs.00 altview="0" haslist="0">NO</CONN_FOLLOW_REDIRECTSs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_RA_REST.PUB.PROMPTSET.OVERWRITE_RA_AGENT" name="PCK.AUTOMIC_RA_REST.PUB.PROMPTSET.OVERWRITE_RA_AGENT" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_RA_REST.PUB.PROMPTSET.OVERWRITE_RA_AGENT" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_RA_REST.PUB.PROMPTSET.OVERWRITE_RA_AGENT" prptmode="1">
+<OVERWRITE_RA_AGENT_PROMPTs.00 altview="1" haslist="0">&amp;OVERWRITE_RA_AGENT_PROMPT#</OVERWRITE_RA_AGENT_PROMPTs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<PRE_SCRIPT mode="1" replacementmode="1" state="1">
+<PSCRI><![CDATA[:SET &CONN_ENDPOINT_URL# = &UC4RB_APIM_EXPORT_POLICY_URL#
+:INC PCK.AUTOMIC_RA_REST.PUB.INCLUDE.PREPARE_RA_JOB
+:INC PCK.AUTOMIC_RA_REST.PUB.INCLUDE.SET_CONNECTION_AUTH_BASIC]]></PSCRI>
+</PRE_SCRIPT>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[!Setting Filename and path for exported policy
+: IF &UC4RB_APIM_EXPORT_PATH# NE ""
+:    SET &AGENT_TEMPDIR# = &UC4RB_APIM_EXPORT_PATH#
+: ELSE
+:    SET &AGENT_TEMPDIR# = GET_VAR('UC_EX_PATH_TEMP', &OVERWRITE_RA_AGENT#)
+: ENDIF
+
+: PSET &UC4RB_CA_APIM_POLICY_PATH# = STR_CAT(&AGENT_TEMPDIR#,"policy-&UC4RB_APIM_POLICY_ID#-&$RUNID#.xml")
+
+!Check for Include Only Service Policy and Include Only Dependencies
+:SET &COUNT# = 0
+:IF &UC4RB_APIM_ONLY_SERVICE_POLICY# EQ "YES"
+:  SET &COUNT# = &COUNT# + 1
+:ENDIF
+:IF &UC4RB_APIM_ONLY_DEPENDENCIES# EQ "YES"
+:  SET &COUNT# = &COUNT# + 1
+:ENDIF
+:IF &COUNT# EQ 2
+:       STOP MSG, 50, "Please provide true value either for Include Only Service Policy or Include Only Dependencies"
+:ENDIF
+
+! Setting all query parameters value
+:SET &query_value_export_type# = &UC4RB_APIM_EXPORT_TYPE#
+
+:SET &ATTRIBUTE_VARA# = "PCK.CA_APIM.PRV.VARA.MAP_BY"
+:SET &UC4RB_MAP_BY_ATTRIBUTE# = &UC4RB_APIM_MAP_BY#
+:INC PCK.CA_APIM.PUB.INCLUDE.ITERATE_VARA
+:SET &query_value_map_by# = &ATTRIBUTE#
+
+
+:IF &UC4RB_APIM_INC_REQ_FOLDER# EQ "YES"
+:  SET &query_value_inc_req_folder# = "true"
+:ELSE
+:    SET &query_value_inc_req_folder# = "false"
+:ENDIF
+
+:IF &UC4RB_APIM_EXPORT_GATEWAY_RMS# EQ "YES"
+:  SET &query_value_export_gateway_rms# = "true"
+:ELSE
+:    SET &query_value_export_gateway_rms# = "false"
+:ENDIF
+
+:IF &UC4RB_APIM_INC_DEPENDENCIES# EQ "YES"
+:  SET &query_value_inc_dependencies# = "true"
+:ELSE
+:    SET &query_value_inc_dependencies# = "false"
+:ENDIF
+
+:IF &UC4RB_APIM_ENCRYPT_SECRETS# EQ "YES"
+:  SET &query_value_encrypt_secrets# = "true"
+:ELSE
+:    SET &query_value_encrypt_secrets# = "false"
+:ENDIF
+
+:IF &UC4RB_APIM_ENC_CLUSTER# EQ "YES"
+:  SET &query_value_enc_cluster# = "true"
+:ELSE
+:    SET &query_value_enc_cluster# = "false"
+:ENDIF
+
+:IF &UC4RB_APIM_ONLY_SERVICE_POLICY# EQ "YES"
+:  SET &query_value_only_srvc_policy# = "true"
+:ELSE
+:    SET &query_value_only_srvc_policy# = "false"
+:ENDIF
+
+:IF &UC4RB_APIM_ONLY_DEPENDENCIES# EQ "YES"
+:  SET &query_value_only_dependencies# = "true"
+:ELSE
+:    SET &query_value_only_dependencies# = "false"
+:ENDIF
+
+! Setting all header parameters value
+
+:IF &UC4RB_APIM_L7_KEY_PASSPHRASE# NE "--10"
+:  SET &header_value_L7_key_passphrase# = &UC4RB_APIM_L7_KEY_PASSPHRASE#
+:ELSE
+:  SET &header_value_L7_key_passphrase# = ""
+:ENDIF]]></MSCRI>
+</SCRIPT>
+<OUTPUTSCAN state="1">
+<Inherit>N</Inherit>
+<filterobjects/>
+<HostFsc/>
+<LoginFsc/>
+</OUTPUTSCAN>
+<POST_SCRIPT mode="1" replacementmode="1" state="1">
+<OSCRI><![CDATA[:SET &STATUS# = GET_UC_OBJECT_STATUS(,,"RETCODE")
+:SET &UC4RB_CA_APIM_PLCY_EXPORT_PATH# = ""
+
+:IF &STATUS# EQ 0
+:  SET &UC4RB_CA_APIM_PLCY_EXPORT_PATH# = &UC4RB_CA_APIM_POLICY_PATH#
+:ENDIF
+
+:PUBLISH &UC4RB_CA_APIM_PLCY_EXPORT_PATH#,,"WORKFLOW"
+]]></OSCRI>
+</POST_SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC><![CDATA[= Action name =
+PCK.AUTOMIC_CA_APIM.PUB.ACTION.EXPORT_POLICY
+
+= General description =
+This action is used to export the API Policy from Policy manager so that it can be deployed to a different environment or can migrate from one gateway to another.
+
+
+= Failure Conditions =
+-It might be possible that the provided policy id does not exist.
+
+= Inputs =
+- Export Path:                            Provide full target path to export APIM Policy. Default path will be the temp folder of the agent.E.g. D:\Automic\APIM
+- ID*:                                    Provide policy ID to be exported.E.g. 82edd5f264e39dfc5fe0f39d49e7bdee
+- Export Type*:                           Provide the type of bundling for given Policy export.E.g. NewOrExisting/NewOrUpdate/Ignore
+- Map By*:                                Specify default mapping for given Policy export.E.g. ID/Name/GUID
+- L7 Key Passphrase:                      Provide base64 encoded passphrase to use for the encryption key when encrypting secrets.
+- Include Request Folder:                 Specify whether to include the folder in the bundle or just its contents.
+- Export Gateway Rest Management Service: Specify whether if Gateway Rest Management Service is also exported.
+- Include Dependencies:                   Specify whether if dependencies are also included.
+- Encrypt Secrets:                        Specify whether if secret values are encrypted.
+- Encrypt with Cluster Passphrase:        Specify whether if Cluster Passphrase is used for encrypting secrets.
+- Include Only Service Policy:            Specify whether if only service policy is included in the export.
+- Include Only Dependencies:              Specify whether if only dependencies are included in the export.       
+
+Note: Include Only Service Policy and Include Only Dependencies both cannot be true at the same time.
+
+= Behavior =
+* The action will export policy on the specified path. Default path will be the temp folder of the agent and the name of the file will be "policy-{policyID}-{runID}". 
+* The action will return an XML file.
+
+=Return Value=
+UC4RB_CA_APIM_PLCY_EXPORT_PATH: Exported policy full path will be returned.
+
+= Outputs =
+* Return code is 0 in case of success.
+* Return code is non-zero in case of failure.
+
+= Rollback =
+(none)
+
+= Logging =
+AE logs will be displayed in the AE report.
+
+= Example =
+- Export Path:                            D:\Automic\APIM
+- ID*:                                    82edd5f264e39dfc5fe0f39d49e7bdee
+- Export Type*:                           NewOrExisting/NewOrUpdate/Ignore
+- Map By*:                                ID/Name/GUID
+- L7 Key Passphrase:                      BASE64
+- Include Request Folder:                 YES/NO
+- Export Gateway Rest Management Service: YES/NO
+- Include Dependencies:                   YES/NO
+- Encrypt Secrets:                        YES/NO
+- Encrypt with Cluster Passphrase:        YES/NO
+- Include Only Service Policy:            YES/NO
+- Include Only Dependencies:              YES/NO]]></DOC>
+</DOCU_Docu>
+</JOBS_CIT>
+</uc-export>

@@ -1,0 +1,26 @@
+*** Settings ***
+Resource          ../../../Env/default.txt
+
+*** Variables ***
+#---- Promptset Fields --------------------------------------------------------------------------------------
+${Rest_API_URL}    https://vviecentos02:8443/
+${Username}       admin
+${Password}       7layer
+#----Export Gateway API-------------------------------------------------------------------------------------
+${ID}             82edd5f264e39dfc5fe0f39d49e7bdee
+${ExportPath}     D:/
+${ExportType}     NewOrExisting
+${MapBy}          ID
+${ExportType1}    NewOrUpdate
+${ExportType2}    Ignore
+${MapBy1}         Name
+${L7Key}          test
+${RequestFolder}    NO
+${ExportGateway}    NO
+${Dependencies}    NO
+${EncryptSecrets}    NO
+${EncryptCluster}    NO
+${OnlyService}    NO
+${OnlyDependencies}    NO
+${OnlyService1}    YES
+${OnlyDependencies1}    YES
