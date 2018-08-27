@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
 <DOCU name="PCK.AUTOMIC_CA_APIM.PUB.DOC">
 <HEADER state="1">
-<Title>Pack Documentation</Title>
+<Title>Package Documentation</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <OH_SubType/>
@@ -18,15 +18,15 @@ CA APIM version 9.3.00
 * The Agent should be able to access CA APIM rest API endpoint URL in order to make HTTP requests.
 
 =Common Inputs=
-Gateway Export API Policy URL : The URL specifies the entry point of the CA APIM REST service. E.g. https://vviecentos02:8443/restman/1.0/bundle/
-Rest RA Agent parameters : Specifies Authentication details, proxy settings, connection timeout and REST RA Agent Name.
+Gateway Export API Policy URL: The URL specifies the entry point of the CA APIM REST service. E.g. https://vviecentos02:8443/restman/1.0/bundle/
+Rest RA Agent parameters: Specifies Authentication details, proxy settings, connection timeout and REST RA Agent Name.
 
 
 =Actions=
 Following actions are supported.
 
-* Action name:  PCK.AUTOMIC_CA_APIM.PUB.ACTION.GATEWAY_EXPORT_API_POLICY
-* Action Description:  This action export gateway API Policy.
+* Action name:  PCK.AUTOMIC_CA_APIM.PUB.ACTION.EXPORT_POLICY
+* Action Description:  This action exports gateway API Policy.
 
 ]]></DOC>
 </DOCU_Docu>
