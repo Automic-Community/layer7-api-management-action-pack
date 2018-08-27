@@ -11,31 +11,31 @@ Resource          ../../Resources/keywords.txt
 Resource          ../../Resources/variables.txt
 Resource          ../../Resources/actions.txt
 
-*** Test Cases ***    OK_NOK    ID                ExportPath       ExportType       MapBy       L7Key       RequestFolder       ExportGateway       Dependencies       EncryptSecrets       EncryptCluster       OnlyService        OnlyDependencies
+*** Test Cases ***    OK_NOK    ID                ExportPath       ExportType        MapBy        L7Key       RequestFolder       ExportGateway       Dependencies       EncryptSecrets       EncryptCluster       OnlyService        OnlyDependencies
 Export API Policy with all valid data
                       [Tags]    main_scenarios
-                      OK        ${ID}             ${ExportPath}    ${ExportType}    ${MapBy}    ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService}     ${OnlyDependencies}
+                      OK        ${ID}             ${ExportPath}    ${ExportType}     ${MapBy}     ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService}     ${OnlyDependencies}
 
 Export API Policy with invalid ID
-                      NOK       Invalid           ${ExportPath}    ${ExportType}    ${MapBy}    ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService}     ${OnlyDependencies}
+                      NOK       Invalid           ${ExportPath}    ${ExportType}     ${MapBy}     ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService}     ${OnlyDependencies}
 
-Export API Policy with invalid ExportPath
-                      NOK       ${ID}             ${ExportPath}    Invalid          ${MapBy}    ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService}     ${OnlyDependencies}
+Export API Policy with 'NewOrUpdate' in ExportType
+                      OK        ${ID}             ${ExportPath}    ${ExportType1}    ${MapBy}     ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService}     ${OnlyDependencies}
 
-Export API Policy with invalid MapBy
-                      NOK       ${ID}             ${ExportPath}    ${ExportType}    Invalid     ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService1}    ${OnlyDependencies}
+Export API Policy with 'Ignore' in ExportType
+                      OK        ${ID}             ${ExportPath}    ${ExportType2}    ${MapBy}     ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService}     ${OnlyDependencies}
+
+Export API Policy with 'name' in MapBy
+                      OK        ${ID}             ${ExportPath}    ${ExportType}     ${MapBy1}    ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService1}    ${OnlyDependencies}
 
 Export API Policy with Yes in OnlyService
-                      [Tags]    main_scenarios
-                      OK        ${ID}             ${ExportPath}    ${ExportType}    ${MapBy}    ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService}     ${OnlyDependencies1}
+                      OK        ${ID}             ${ExportPath}    ${ExportType}     ${MapBy}     ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService1}    ${OnlyDependencies}
 
 Export API Policy with Yes in OnlyDependencies
-                      [Tags]    main_scenarios
-                      OK        ${ID}             ${ExportPath}    ${ExportType}    ${MapBy}    ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService1}    ${OnlyDependencies1}
+                      OK        ${ID}             ${ExportPath}    ${ExportType}     ${MapBy}     ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService}     ${OnlyDependencies1}
 
 Export API Policy with Yes in both OnlyService and OnlyDependencies
-                      [Tags]    main_scenarios
-                      NOK       ${ID}             ${ExportPath}    ${ExportType}    ${MapBy}    ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService}     ${OnlyDependencies}
+                      NOK       ${ID}             ${ExportPath}    ${ExportType}     ${MapBy}     ${L7Key}    ${RequestFolder}    ${ExportGateway}    ${Dependencies}    ${EncryptSecrets}    ${EncryptCluster}    ${OnlyService1}    ${OnlyDependencies1}
 
 *** Keywords ***
 Startup
@@ -83,8 +83,8 @@ Export API Policy Job Template
     Action Execute
     Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success
     ...    ELSE    Assert Failure
-    Run Keyword If    '${OK_NOK}' == 'OK'    Action Object Variable Should Be Found    &UC4RB_CA_APIM_POLICY_PATH#
-    ...    ELSE    Action Object Variable Should Not Be Found    &UC4RB_CA_APIM_POLICY_PATH#
+    Run Keyword If    '${OK_NOK}' == 'OK'    Action Object Variable Should Be Found    &UC4RB_CA_APIM_PLCY_EXPORT_PATH#
+    ...    ELSE    Action Object Variable Should Not Be Found    &UC4RB_CA_APIM_PLCY_EXPORT_PATH#
 
 Teardown
     Log    *******End Test "Export API Policy"*******

@@ -116,5 +116,5 @@ Init Action
 
 Connect To CA APIM
     Action Set    &UC4RB_APIM_EXPORT_POLICY_URL#    ${Rest_API_URL}
-    Action Set    &UC4RB_CA_APIM_USERNAME#    ${Username}
-    Action Set    &UC4RB_CA_APIM_PASSWORD#    ${Password}
+    Action Set    &CONN_AUTH_BASIC_USERNAME#    ${Username}
+    Action Set    &CONN_AUTH_BASIC_PASSWORD#    ${Password}

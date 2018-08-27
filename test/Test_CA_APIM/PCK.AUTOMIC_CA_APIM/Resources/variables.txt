@@ -8,9 +8,12 @@ ${Username}       admin
 ${Password}       7layer
 #----Export Gateway API-------------------------------------------------------------------------------------
 ${ID}             82edd5f264e39dfc5fe0f39d49e7bdee
-${ExportPath}     D:\
+${ExportPath}     D:/
 ${ExportType}     NewOrExisting
-${MapBy}          id
+${MapBy}          ID
+${ExportType1}    NewOrUpdate
+${ExportType2}    Ignore
+${MapBy1}         Name
 ${L7Key}          test
 ${RequestFolder}    NO
 ${ExportGateway}    NO
