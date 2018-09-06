@@ -99,7 +99,7 @@
 <component con="0" enc="0" type="2" value="activate" xmlName="query_1_0"/>
 <component con="0" enc="0" type="2" value="&amp;query_value_activate_policy#" xmlName="query_1_1"/>
 <component con="0" enc="0" type="2" value="versionComment" xmlName="query_2_0"/>
-<component con="0" enc="0" type="2" value="&amp;query_value_comment#" xmlName="query_2_1"/>
+<component con="0" enc="0" type="2" value="&amp;UC4RB_APIM_COMMENT#" xmlName="query_2_1"/>
 <component con="0" enc="0" type="2" value="&amp;UC4RB_APIM_BUNDLE_PATH#" xmlName="request_part_0_file"/>
 <component con="0" enc="0" type="2" value="application/xml" xmlName="request_part_0_mediaType"/>
 <component con="0" enc="0" type="2" value="Part 1" xmlName="request_part_0_partName"/>
@@ -248,7 +248,7 @@
 :  SET &query_value_activate_policy# = "false"
 :ENDIF
 
-:SET &query_value_comment# = &UC4RB_APIM_COMMENT#
+!:SET &query_value_comment# = &UC4RB_APIM_COMMENT#
 
 ! Setting all header parameters value
 :IF &UC4RB_APIM_L7_KEY_PASSPHRASE# NE "--10"
@@ -275,8 +275,8 @@ This action is used to import Policy into policy manager so that user can get al
 
 
 = Failure Conditions =
--It might possible that provided policy data is not correct or their format is not correct.
--It might be possible that the provided bundle path does not exist.
+-If provided policy data is not correct or format is not correct.
+-If provided bundle path does not exist.
 
 = Inputs =
 - Bundle Path*:                           Provide full path including the file name of the Bundle to be imported.E.g. D:\Automic\APIM\Policy.xml
