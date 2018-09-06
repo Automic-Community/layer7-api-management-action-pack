@@ -248,8 +248,6 @@
 :  SET &query_value_activate_policy# = "false"
 :ENDIF
 
-!:SET &query_value_comment# = &UC4RB_APIM_COMMENT#
-
 ! Setting all header parameters value
 :IF &UC4RB_APIM_L7_KEY_PASSPHRASE# NE "--10"
 :  SET &header_value_L7_key_passphrase# = &UC4RB_APIM_L7_KEY_PASSPHRASE#
