@@ -361,7 +361,7 @@ This action is used to export the API Policy from Policy manager so that it can 
 -It might be possible that the provided policy id does not exist.
 
 = Inputs =
-- Export Path:                            Provide full target path to export APIM Policy. Default path will be the temp folder of the agent.E.g. D:\Automic\APIM
+- Export Path:                            Provide full target path to export APIM Policy. Default path will be the temp folder of the agent.E.g. D:\Automic\APIM\
 - ID*:                                    Provide policy ID to be exported.E.g. 82edd5f264e39dfc5fe0f39d49e7bdee
 - Export Type*:                           Provide the type of bundling for given Policy export.E.g. NewOrExisting/NewOrUpdate/Ignore
 - Map By*:                                Specify default mapping for given Policy export.E.g. ID/Name/GUID
@@ -394,7 +394,7 @@ UC4RB_CA_APIM_PLCY_EXPORT_PATH: Exported policy full path will be returned.
 AE logs will be displayed in the AE report.
 
 = Example =
-- Export Path:                            D:\Automic\APIM
+- Export Path:                            D:\Automic\APIM\
 - ID*:                                    82edd5f264e39dfc5fe0f39d49e7bdee
 - Export Type*:                           NewOrExisting/NewOrUpdate/Ignore
 - Map By*:                                ID/Name/GUID
