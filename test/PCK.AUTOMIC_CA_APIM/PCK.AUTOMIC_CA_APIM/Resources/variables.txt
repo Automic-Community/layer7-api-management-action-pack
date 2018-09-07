@@ -25,5 +25,5 @@ ${OnlyDependencies}    NO
 ${OnlyService1}    YES
 ${OnlyDependencies1}    YES
 #----Import Gateway API-------------------------------------------------------------------------------------
-${BundlePath}             82edd5f264e39dfc5fe0f39d49e7bdee
-${Comment}     D:/
+${BundlePath}     C:\\Users\\ritesh1583\\Desktop\\shPolicy.xml
+${Comment}        TestComment

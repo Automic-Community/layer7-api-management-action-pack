@@ -11,23 +11,25 @@ Resource          ../../Resources/keywords.txt
 Resource          ../../Resources/variables.txt
 Resource          ../../Resources/actions.txt
 
+*** Test Cases ***    OK_NOK    BundlePath        L7Key       TestImport    Activate    Comment
 Import API Policy with all valid data
                       [Tags]    main_scenarios
-                      OK        ${BundlePath}     ${L7Key}    NO    NO    ${Comment}
+                      OK        ${BundlePath}     ${L7Key}    No            No          ${Comment}
+
 Import API Policy with Empty BundlePath
-                      NOK       ${Empty}          ${L7Key}    NO    NO    ${Comment}
+                      NOK       ${Empty}          ${L7Key}    No            No          ${Comment}
 
 Import API Policy with Empty L7 Key
-                      NOK       ${BundlePath}     ${Empty}     NO    NO    ${Comment}
+                      OK        ${BundlePath}     ${Empty}    No            No          ${Comment}
 
 Import API Policy with TestImport as Yes
-                      OK        ${BundlePath}     ${L7Key}     YES    NO    ${Comment}
+                      OK        ${BundlePath}     ${L7Key}    Yes           No          ${Comment}
 
 Import API Policy with invalid BundlePath
-                      NOK       Invalid           ${L7Key}     YES    YES    ${Comment}
+                      NOK       Invalid           ${L7Key}    Yes           Yes         ${Comment}
 
 Import API Policy with Activate as Yes
-                      OK       ${BundlePath}     ${L7Key}     YES    YES    ${Comment}
+                      OK        ${BundlePath}     ${L7Key}    Yes           Yes         ${Comment}
 
 *** Keywords ***
 Startup
@@ -44,17 +46,17 @@ Import Policy Job Template
     ...    -${TestImport}: This field specifies whether whether if the bundle import will be tested before real import is done.
     ...    -${Activate}: This field specifies whether if the updated services and policies should be activated.
     ...    -${Comment}: This field specifies whether if Comment are also included.
-    
     Generate String
     Init Action    ${_CA_APIM_IMPORT_ACTION}
     Connect To CA_APIM
-    Run Keyword If    '${BundlePath}' == 'Invalid'    Action Set    &UC4RB_APIM_BUNDLE_PATH#    ${Generated_Name}_${Time}   ELSE    Action Set    &UC4RB_APIM_BUNDLE_PATH#    ${BundlePath}
+    Run Keyword If    '${BundlePath}' == 'Invalid'    Action Set    &UC4RB_APIM_BUNDLE_PATH#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_APIM_BUNDLE_PATH#    ${BundlePath}
     Action Set    &UC4RB_APIM_L7_KEY_PASSPHRASE#    ${L7Key}
     Action Set    &UC4RB_APIM_TEST_IMPORT#    ${TestImport}
     Action Set    &UC4RB_APIM_ACTIVATE_POLICY#    ${Activate}
     Action Set    &UC4RB_APIM_COMMENT#    ${Comment}
     Action Execute
-    Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success  ELSE    Assert Failure
-    
+    Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success    ELSE    Assert Failure
+
 Teardown
     Log    *******End Test "Import Policy"*******
