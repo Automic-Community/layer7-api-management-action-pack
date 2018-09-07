@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
-<JOBS_CIT AttrType="CIT" name="PCK.AUTOMIC_CA_APIM.PUB.ACTION.EXPORT_POLICY">
+<JOBS_CIT AttrType="CIT" name="PCK.AUTOMIC_CA_APIM.PUB.ACTION.IMPORT_POLICY">
 <XHEADER state="1">
-<Title>Export Policy</Title>
+<Title>Import Policy</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -83,41 +83,31 @@
 <component con="0" enc="0" type="2" value="" xmlName="conn_read_timeout"/>
 <component con="0" enc="0" type="2" value="30" xmlName="connectTimeout"/>
 <component con="0" enc="0" type="2" value="" xmlName="curl"/>
-<component con="0" enc="0" type="2" value="&amp;UC4RB_CA_APIM_POLICY_PATH#" xmlName="file"/>
+<component con="0" enc="0" type="2" value="" xmlName="file"/>
 <component con="0" enc="0" type="2" value="L7-key-passphrase" xmlName="header_0_0"/>
 <component con="0" enc="0" type="2" value="&amp;header_value_L7_key_passphrase#" xmlName="header_0_1"/>
 <component con="0" enc="0" type="2" value="false" xmlName="isCurl"/>
 <component con="0" enc="0" type="2" value="false" xmlName="jobHeaders"/>
 <component con="0" enc="0" type="2" value="false" xmlName="jobQuery"/>
-<component con="0" enc="0" type="2" value="GET" xmlName="method"/>
+<component con="0" enc="0" type="2" value="application/xml" xmlName="mediaType"/>
+<component con="0" enc="0" type="2" value="PUT" xmlName="method"/>
 <component con="0" enc="0" type="2" value="false" xmlName="multiPart"/>
 <component con="0" enc="0" type="2" value="false" xmlName="multiPartResp"/>
-<component con="0" enc="0" type="2" value="defaultAction" xmlName="query_0_0"/>
-<component con="0" enc="0" type="2" value="&amp;query_value_export_type#" xmlName="query_0_1"/>
-<component con="0" enc="0" type="2" value="defaultMapBy" xmlName="query_1_0"/>
-<component con="0" enc="0" type="2" value="&amp;query_value_map_by#" xmlName="query_1_1"/>
-<component con="0" enc="0" type="2" value="includeRequestFolder" xmlName="query_2_0"/>
-<component con="0" enc="0" type="2" value="&amp;query_value_inc_req_folder#" xmlName="query_2_1"/>
-<component con="0" enc="0" type="2" value="exportGatewayRestManagementService" xmlName="query_3_0"/>
-<component con="0" enc="0" type="2" value="&amp;query_value_export_gateway_rms#" xmlName="query_3_1"/>
-<component con="0" enc="0" type="2" value="includeDependencies" xmlName="query_4_0"/>
-<component con="0" enc="0" type="2" value="&amp;query_value_inc_dependencies#" xmlName="query_4_1"/>
-<component con="0" enc="0" type="2" value="encryptSecrets" xmlName="query_5_0"/>
-<component con="0" enc="0" type="2" value="&amp;query_value_encrypt_secrets#" xmlName="query_5_1"/>
-<component con="0" enc="0" type="2" value="encryptUsingClusterPassphrase" xmlName="query_6_0"/>
-<component con="0" enc="0" type="2" value="&amp;query_value_enc_cluster#" xmlName="query_6_1"/>
-<component con="0" enc="0" type="2" value="includeOnlyServicePolicy" xmlName="query_7_0"/>
-<component con="0" enc="0" type="2" value="&amp;query_value_only_srvc_policy#" xmlName="query_7_1"/>
-<component con="0" enc="0" type="2" value="includeOnlyDependencies" xmlName="query_8_0"/>
-<component con="0" enc="0" type="2" value="&amp;query_value_only_dependencies#" xmlName="query_8_1"/>
+<component con="0" enc="0" type="2" value="Part 1" xmlName="partName"/>
+<component con="0" enc="0" type="2" value="test" xmlName="query_0_0"/>
+<component con="0" enc="0" type="2" value="&amp;query_value_test_import#" xmlName="query_0_1"/>
+<component con="0" enc="0" type="2" value="activate" xmlName="query_1_0"/>
+<component con="0" enc="0" type="2" value="&amp;query_value_activate_policy#" xmlName="query_1_1"/>
+<component con="0" enc="0" type="2" value="versionComment" xmlName="query_2_0"/>
+<component con="0" enc="0" type="2" value="&amp;UC4RB_APIM_COMMENT#" xmlName="query_2_1"/>
+<component con="0" enc="0" type="2" value="&amp;UC4RB_APIM_BUNDLE_PATH#" xmlName="request_part_0_file"/>
+<component con="0" enc="0" type="2" value="application/xml" xmlName="request_part_0_mediaType"/>
+<component con="0" enc="0" type="2" value="Part 1" xmlName="request_part_0_partName"/>
+<component con="0" enc="0" type="2" value="file" xmlName="request_part_0_requestDataSource"/>
+<component con="0" enc="0" type="2" value="file" xmlName="requestDataSource"/>
 <component con="0" enc="0" type="2" value="false" xmlName="requestReports"/>
-<component con="0" enc="0" type="2" value="restman/1.0/bundle/policy/&amp;UC4RB_APIM_POLICY_ID#" xmlName="resource"/>
-<component con="0" enc="0" type="2" value="&amp;UC4RB_CA_APIM_POLICY_PATH#" xmlName="response_part_0_file"/>
-<component con="0" enc="0" type="2" value="//*" xmlName="response_part_0_script_0_code_0"/>
-<component con="0" enc="0" type="2" value="XPath" xmlName="response_part_0_script_0_queryType"/>
-<component con="0" enc="0" type="2" value="UC4RB_CA_APIM_POLICY_PATH#" xmlName="response_part_0_script_0_resourceName"/>
-<component con="0" enc="0" type="2" value="file" xmlName="response_part_0_script_0_saveTo"/>
-<component con="0" enc="0" type="2" value="false" xmlName="response_part_0_script_0_useArray"/>
+<component con="0" enc="0" type="2" value="restman/1.0/bundle" xmlName="resource"/>
+<component con="0" enc="0" type="2" value="" xmlName="response_part_0_file"/>
 <component con="0" enc="0" type="2" value="false" xmlName="responseReport"/>
 <component con="0" enc="0" type="2" value="60" xmlName="responseTimeout"/>
 <component con="0" enc="0" type="2" value="true" xmlName="responseToJobLog"/>
@@ -189,21 +179,14 @@
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_APIM.PRV.PROMPTSET.EXPORT_POLICY" name="PCK.AUTOMIC_CA_APIM.PRV.PROMPTSET.EXPORT_POLICY" parent="PRPTS" type="PROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_APIM.PRV.PROMPTSET.EXPORT_POLICY" ontop="1">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_APIM.PRV.PROMPTSET.EXPORT_POLICY" prptmode="1">
-<UC4RB_APIM_EXPORT_PATHs.00 altview="0" haslist="0"/>
-<UC4RB_APIM_POLICY_IDs.00 altview="0" haslist="0"/>
-<UC4RB_APIM_EXPORT_TYPEs.00 altview="0" haslist="0">NewOrExisting</UC4RB_APIM_EXPORT_TYPEs.00>
-<UC4RB_APIM_MAP_BYs.00 altview="0" haslist="0">ID</UC4RB_APIM_MAP_BYs.00>
+<node content="1" id="PCK.AUTOMIC_CA_APIM.PRV.PROMPTSET.IMPORT_POLICY" name="PCK.AUTOMIC_CA_APIM.PRV.PROMPTSET.IMPORT_POLICY" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_APIM.PRV.PROMPTSET.IMPORT_POLICY" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_APIM.PRV.PROMPTSET.IMPORT_POLICY" prptmode="1">
+<UC4RB_APIM_BUNDLE_PATHs.00 altview="0" haslist="0"/>
 <UC4RB_APIM_L7_KEY_PASSPHRASEs.00 altview="0" haslist="0">--10</UC4RB_APIM_L7_KEY_PASSPHRASEs.00>
-<UC4RB_APIM_INC_REQ_FOLDERs.00 altview="0" haslist="0">No</UC4RB_APIM_INC_REQ_FOLDERs.00>
-<UC4RB_APIM_EXPORT_GATEWAY_RMSs.00 altview="0" haslist="0">No</UC4RB_APIM_EXPORT_GATEWAY_RMSs.00>
-<UC4RB_APIM_INC_DEPENDENCIESs.00 altview="0" haslist="0">No</UC4RB_APIM_INC_DEPENDENCIESs.00>
-<UC4RB_APIM_ENCRYPT_SECRETSs.00 altview="0" haslist="0">No</UC4RB_APIM_ENCRYPT_SECRETSs.00>
-<UC4RB_APIM_ENC_CLUSTERs.00 altview="0" haslist="0">No</UC4RB_APIM_ENC_CLUSTERs.00>
-<UC4RB_APIM_ONLY_SERVICE_POLICYs.00 altview="0" haslist="0">No</UC4RB_APIM_ONLY_SERVICE_POLICYs.00>
-<UC4RB_APIM_ONLY_DEPENDENCIESs.00 altview="0" haslist="0">No</UC4RB_APIM_ONLY_DEPENDENCIESs.00>
+<UC4RB_APIM_TEST_IMPORTs.00 altview="0" haslist="0">Yes</UC4RB_APIM_TEST_IMPORTs.00>
+<UC4RB_APIM_ACTIVATE_POLICYs.00 altview="0" haslist="0">No</UC4RB_APIM_ACTIVATE_POLICYs.00>
+<UC4RB_APIM_COMMENTs.00 altview="0" haslist="0"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -252,80 +235,20 @@
 :INC PCK.AUTOMIC_RA_REST.PUB.INCLUDE.SET_CONNECTION_AUTH_BASIC]]></PSCRI>
 </PRE_SCRIPT>
 <SCRIPT mode="1" state="1">
-<MSCRI><![CDATA[!Setting Filename and path for exported policy
-: IF &UC4RB_APIM_EXPORT_PATH# NE ""
-:    SET &AGENT_TEMPDIR# = &UC4RB_APIM_EXPORT_PATH#
-: ELSE
-:    SET &AGENT_TEMPDIR# = GET_VAR('UC_EX_PATH_TEMP', &OVERWRITE_RA_AGENT#)
-: ENDIF
-
-: PSET &UC4RB_CA_APIM_POLICY_PATH# = STR_CAT(&AGENT_TEMPDIR#,"policy-&UC4RB_APIM_POLICY_ID#-&$RUNID#.xml")
-
-!Check for Include Only Service Policy and Include Only Dependencies
-:SET &COUNT# = 0
-:IF &UC4RB_APIM_ONLY_SERVICE_POLICY# EQ "Yes"
-:  SET &COUNT# = &COUNT# + 1
-:ENDIF
-:IF &UC4RB_APIM_ONLY_DEPENDENCIES# EQ "Yes"
-:  SET &COUNT# = &COUNT# + 1
-:ENDIF
-:IF &COUNT# EQ 2
-:       STOP MSG, 50, "Please provide true value either for Include Only Service Policy or Include Only Dependencies"
-:ENDIF
-
-! Setting all query parameters value
-:SET &query_value_export_type# = &UC4RB_APIM_EXPORT_TYPE#
-
-:SET &ATTRIBUTE_VARA# = "PCK.CA_APIM.PRV.VARA.MAP_BY"
-:SET &UC4RB_MAP_BY_ATTRIBUTE# = &UC4RB_APIM_MAP_BY#
-:INC PCK.CA_APIM.PUB.INCLUDE.ITERATE_VARA
-:SET &query_value_map_by# = &ATTRIBUTE#
-
-
-:IF &UC4RB_APIM_INC_REQ_FOLDER# EQ "Yes"
-:  SET &query_value_inc_req_folder# = "true"
+<MSCRI><![CDATA[! Setting all query parameters value
+:IF &UC4RB_APIM_TEST_IMPORT# EQ "Yes"
+:  SET &query_value_test_import# = "true"
 :ELSE
-:    SET &query_value_inc_req_folder# = "false"
+:  SET &query_value_test_import# = "false"
 :ENDIF
 
-:IF &UC4RB_APIM_EXPORT_GATEWAY_RMS# EQ "Yes"
-:  SET &query_value_export_gateway_rms# = "true"
+:IF &UC4RB_APIM_ACTIVATE_POLICY# EQ "Yes"
+:  SET &query_value_activate_policy# = "true"
 :ELSE
-:    SET &query_value_export_gateway_rms# = "false"
-:ENDIF
-
-:IF &UC4RB_APIM_INC_DEPENDENCIES# EQ "Yes"
-:  SET &query_value_inc_dependencies# = "true"
-:ELSE
-:    SET &query_value_inc_dependencies# = "false"
-:ENDIF
-
-:IF &UC4RB_APIM_ENCRYPT_SECRETS# EQ "Yes"
-:  SET &query_value_encrypt_secrets# = "true"
-:ELSE
-:    SET &query_value_encrypt_secrets# = "false"
-:ENDIF
-
-:IF &UC4RB_APIM_ENC_CLUSTER# EQ "Yes"
-:  SET &query_value_enc_cluster# = "true"
-:ELSE
-:    SET &query_value_enc_cluster# = "false"
-:ENDIF
-
-:IF &UC4RB_APIM_ONLY_SERVICE_POLICY# EQ "Yes"
-:  SET &query_value_only_srvc_policy# = "true"
-:ELSE
-:    SET &query_value_only_srvc_policy# = "false"
-:ENDIF
-
-:IF &UC4RB_APIM_ONLY_DEPENDENCIES# EQ "Yes"
-:  SET &query_value_only_dependencies# = "true"
-:ELSE
-:    SET &query_value_only_dependencies# = "false"
+:  SET &query_value_activate_policy# = "false"
 :ENDIF
 
 ! Setting all header parameters value
-
 :IF &UC4RB_APIM_L7_KEY_PASSPHRASE# NE "--10"
 :  SET &header_value_L7_key_passphrase# = &UC4RB_APIM_L7_KEY_PASSPHRASE#
 :ELSE
@@ -339,49 +262,34 @@
 <LoginFsc/>
 </OUTPUTSCAN>
 <POST_SCRIPT mode="1" replacementmode="1" state="1">
-<OSCRI><![CDATA[:SET &STATUS# = GET_UC_OBJECT_STATUS(,,"RETCODE")
-:SET &UC4RB_CA_APIM_PLCY_EXPORT_PATH# = ""
-
-:IF &STATUS# EQ 0
-:  SET &UC4RB_CA_APIM_PLCY_EXPORT_PATH# = &UC4RB_CA_APIM_POLICY_PATH#
-:ENDIF
-
-:PUBLISH &UC4RB_CA_APIM_PLCY_EXPORT_PATH#,,"WORKFLOW"
-]]></OSCRI>
+<OSCRI/>
 </POST_SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC><![CDATA[= Action name =
-PCK.AUTOMIC_CA_APIM.PUB.ACTION.EXPORT_POLICY
+PCK.AUTOMIC_CA_APIM.PUB.ACTION.IMPORT_POLICY
 
 = General description =
-This action is used to export the API Policy from Policy manager so that it can be deployed to a different environment or can migrate from one gateway to another.
+This action is used to import Policy into policy manager so that user can get already exported policy in the target environment.
 
 
 = Failure Conditions =
--It might be possible that the provided policy id does not exist.
+-If provided policy data is not correct or format is not correct.
+-If provided bundle path does not exist.
 
 = Inputs =
-- Export Path:                            Provide full target path to export APIM Policy. Default path will be the temp folder of the agent.E.g. D:\Automic\APIM
-- ID*:                                    Provide policy ID to be exported.E.g. 82edd5f264e39dfc5fe0f39d49e7bdee
-- Export Type*:                           Provide the type of bundling for given Policy export.E.g. NewOrExisting/NewOrUpdate/Ignore
-- Map By*:                                Specify default mapping for given Policy export.E.g. ID/Name/GUID
-- L7 Key Passphrase:                      Provide base64 encoded passphrase to use for the encryption key when encrypting secrets.
-- Include Request Folder:                 Specify whether to include the folder in the bundle or just its contents.
-- Export Gateway Rest Management Service: Specify whether if Gateway Rest Management Service is also exported.
-- Include Dependencies:                   Specify whether if dependencies are also included.
-- Encrypt Secrets:                        Specify whether if secret values are encrypted.
-- Encrypt with Cluster Passphrase:        Specify whether if Cluster Passphrase is used for encrypting secrets.
-- Include Only Service Policy:            Specify whether if only service policy is included in the export.
-- Include Only Dependencies:              Specify whether if only dependencies are included in the export.       
+- Bundle Path*:                           Provide full path including the file name of the Bundle to be imported.E.g. D:\Automic\APIM\Policy.xml
+- L7 Key Passphrase:                      Provide base64 encoded passphrase to use for the encryption key when encrypting secrets.E.g. base64
+- Test the Import:                        Specify whether if the bundle import will be tested before real import is done.No changes will be made to the gateway.
+- Activate:                               Specify whether if the updated services and policies should be activated.
+- Comment:                                Provide a comment to this version.E.g. DB Connection has been changed in this Policy version 2.0.
 
-Note: Include Only Service Policy and Include Only Dependencies both cannot be true at the same time.
 
 = Behavior =
-* The action will export policy on the specified path. Default path will be the temp folder of the agent and the name of the file will be "policy-{policyID}-{runID}". 
-* The action will return an XML file.
+* The action will import policy on the target environment. 
+
 
 =Return Value=
-UC4RB_CA_APIM_PLCY_EXPORT_PATH: Exported policy full path will be returned.
+(None)
 
 = Outputs =
 * Return code is 0 in case of success.
@@ -394,18 +302,11 @@ UC4RB_CA_APIM_PLCY_EXPORT_PATH: Exported policy full path will be returned.
 AE logs will be displayed in the AE report.
 
 = Example =
-- Export Path:                            D:\Automic\APIM
-- ID*:                                    82edd5f264e39dfc5fe0f39d49e7bdee
-- Export Type*:                           NewOrExisting/NewOrUpdate/Ignore
-- Map By*:                                ID/Name/GUID
-- L7 Key Passphrase:                      BASE64
-- Include Request Folder:                 YES/NO
-- Export Gateway Rest Management Service: YES/NO
-- Include Dependencies:                   YES/NO
-- Encrypt Secrets:                        YES/NO
-- Encrypt with Cluster Passphrase:        YES/NO
-- Include Only Service Policy:            YES/NO
-- Include Only Dependencies:              YES/NO]]></DOC>
+- Bundle Path*:                           D:\Automic\APIM\Policy.xml
+- L7 Key Passphrase:                      base64
+- Test the Import:                        Yes/No
+- Activate:                               Yes/No
+- Comment:                                DB Connection has been changed in this Policy version 2.0.]]></DOC>
 </DOCU_Docu>
 </JOBS_CIT>
 </uc-export>
