@@ -31,6 +31,9 @@ Following actions are supported.
 * Action name:  PCK.AUTOMIC_CA_APIM.PUB.ACTION.IMPORT_POLICY
 * Action Description:  This action imports gateway API Policy.
 
+* Action name:  PCK.AUTOMIC_CA_APIM.PUB.ACTION.PREPARE_BUNDLE_FOR_IMPORT
+* Action Description:  This action prepare bundle compatible to import in APIM..
+
 ]]></DOC>
 </DOCU_Docu>
 </DOCU>
