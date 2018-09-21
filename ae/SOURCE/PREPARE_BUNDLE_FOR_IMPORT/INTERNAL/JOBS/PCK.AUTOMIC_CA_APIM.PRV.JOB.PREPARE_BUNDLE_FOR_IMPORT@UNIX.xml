@@ -107,9 +107,91 @@
 <PSCRI><![CDATA[:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.PREPARE_JOB]]></PSCRI>
 </PRE_SCRIPT>
 <SCRIPT mode="1" state="1">
-<MSCRI><![CDATA[! Creating a temp file from source file
-:   SET &AGENT_TEMPDIR# = GET_VAR('UC_EX_PATH_TEMP', &AGENT#)
-:   PSET &UC4RB_FILE_PATH# = STR_CAT(&AGENT_TEMPDIR#,"export_file_copy-&$RUNID#.xml")
+<MSCRI><![CDATA[! Read File & write file
+: SET &FLAG# = 0
+: SET &START_TOKEN# = "<l7:Bundle>"
+: SET &END_TOKEN# = "</l7:Bundle>"
+: SET &PROCESS_FILE_TOKEN# = '<l7:Bundle xmlns:l7="http://ns.l7tech.com/2010/04/gateway-management">'
+: PSET &FILE_NAME# = &UC4RB_APIM_TARGET_BUNDLE#
+:SET &HND# = PREP_PROCESS_FILE(WIN01, &UC4RB_APIM_SOURCE_BUNDLE#)
+:    SET &HND1# = CREATE_PROCESS(NEW)
+
+: PROCESS &HND#
+:   SET &LINE# = GET_PROCESS_LINE(&HND#)
+:   SET &LINE# = STR_TRIM(&LINE#)
+:   IF &LINE# EQ &START_TOKEN#
+:     SET &LINE# = STR_SUB(&LINE#,">",' xmlns:l7="http://ns.l7tech.com/2010/04/gateway-management">')
+:     SET &FLAG# = 1
+:   ELSE
+:      IF &LINE# EQ &PROCESS_FILE_TOKEN#
+:         SET &FLAG# = 1
+:      ENDIF
+:   ENDIF
+
+: IF &FLAG# GT 0
+:    SET &RET# = PUT_PROCESS_LINE(&HND1#, &LINE#)
+: ENDIF
+
+:   IF &LINE# EQ &END_TOKEN#
+:     SET &FLAG# = 0
+:          SET &RET# = WRITE_PROCESS(&HND1#,&FILE_NAME#,WIN01,LOGIN.WIN01,OVERWRITE)
+:    IF &RET# <> 0
+:      PRINT "Error in writing file to path : &FILE_NAME#"
+:    ENDIF
+
+:   ENDIF
+:ENDPROCESS
+: CLOSE_PROCESS &HND#
+: CLOSE_PROCESS &HND1#
+
+
+
+! unwrap selected node
+:DEFINE &TOKENS#, string, 2
+: SET &UNWRAP_TOKEN#=" <l7:Type>,<l7:PolicyType>"
+:FILL &TOKENS#[] = STR_SPLIT(&UNWRAP_TOKEN#,",")
+: SET &FLAG# = 0
+
+:SET &VAR# = 1
+:SET &LEN# = LENGTH(&TOKENS#[])
+:WHILE &VAR# LE &LEN#
+: p "lEN :  &LEN#"
+:   SET &NODE# = ""
+:   SET &START_TOKEN# = &TOKENS#[&VAR#]
+:   SET &START_TOKEN# = STR_TRIM(&START_TOKEN#)
+:   SET &END_TOKEN# = STR_SUB(&START_TOKEN#, "<", "</")
+: P  "START_TOKEN :&START_TOKEN#"
+:  P  "END_TOKEN :&END_TOKEN#"
+:   SET &HND# = PREP_PROCESS_FILE(WIN01, &FILE_NAME#)
+:   SET &HND1# = CREATE_PROCESS(NEW)
+
+:   PROCESS &HND#
+:    SET &LINE# = GET_PROCESS_LINE(&HND#)
+:    SET &LINE# = STR_TRIM(&LINE#)
+:    IF &LINE# EQ &START_TOKEN#
+:     SET &FLAG# = 1
+:    ENDIF
+:    IF &FLAG# EQ 1
+!:      PRINT "&LINE#"
+:      SET &NODE# = STR_CAT(&NODE#,"&LINE#")
+:    ELSE
+:      SET &RET# = PUT_PROCESS_LINE(&HND1#, &LINE#)
+:   ENDIF
+:   IF &LINE# EQ &END_TOKEN#
+:     SET &FLAG# = 0
+: p " Node :&NODE#"
+:     SET &RET# = PUT_PROCESS_LINE(&HND1#, &NODE#)
+:     SET &NODE# = ""
+:    ENDIF
+:   ENDPROCESS
+:   CLOSE_PROCESS &HND#
+:   SET &RET# = WRITE_PROCESS(&HND1#,&FILE_NAME#,WIN01,LOGIN.WIN01,OVERWRITE)
+:    IF &RET# <> 0
+:      PRINT "Error in writing file to path : &FILE_NAME#"
+:    ENDIF
+:   CLOSE_PROCESS &HND1#
+:   SET &VAR# = &VAR#+ 1
+: ENDWHILE
 ]]></MSCRI>
 </SCRIPT>
 <OUTPUTSCAN state="1">
@@ -119,7 +201,8 @@
 <LoginFsc/>
 </OUTPUTSCAN>
 <POST_SCRIPT mode="1" replacementmode="1" state="1">
-<OSCRI/>
+<OSCRI><![CDATA[:SET &UC4RB_APIM_TARGET_PATH# = &FILE_NAME#
+:PUBLISH &UC4RB_APIM_TARGET_PATH#,,"WORKFLOW"]]></OSCRI>
 </POST_SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC/>
