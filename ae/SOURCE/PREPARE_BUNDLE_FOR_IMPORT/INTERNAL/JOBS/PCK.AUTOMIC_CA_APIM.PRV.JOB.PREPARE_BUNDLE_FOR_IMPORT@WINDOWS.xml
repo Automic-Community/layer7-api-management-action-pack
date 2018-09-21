@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
 <JOBS_WINDOWS AttrType="WINDOWS" name="PCK.AUTOMIC_CA_APIM.PRV.JOB.PREPARE_BUNDLE_FOR_IMPORT@WINDOWS">
 <XHEADER state="1">
-<Title/>
+<Title>Prepare Bundle For Import</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -25,14 +25,14 @@
 <ExtRepDef>1</ExtRepDef>
 <ExtRepAll>0</ExtRepAll>
 <ExtRepNone>0</ExtRepNone>
-<AutoDeactNo>1</AutoDeactNo>
+<AutoDeactNo>0</AutoDeactNo>
 <AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
 <AutoDeactErrorFree>0</AutoDeactErrorFree>
 <DeactWhen/>
 <DeactDelay>0</DeactDelay>
-<AutoDeactAlways>0</AutoDeactAlways>
+<AutoDeactAlways>1</AutoDeactAlways>
 <AttDialog>0</AttDialog>
-<ActAtRun>1</ActAtRun>
+<ActAtRun>0</ActAtRun>
 <Consumption>0</Consumption>
 <UC4Priority>0</UC4Priority>
 <MaxParallel2>0</MaxParallel2>
@@ -45,9 +45,9 @@
 <OutputDbErr>0</OutputDbErr>
 <OutputFile>0</OutputFile>
 <IsGenerated>0</IsGenerated>
-<BAT>0</BAT>
+<BAT>1</BAT>
 <COM>0</COM>
-<WinBatch>1</WinBatch>
+<WinBatch>0</WinBatch>
 <Standard>1</Standard>
 <Minimized>0</Minimized>
 <Maximized>0</Maximized>
@@ -112,16 +112,36 @@
 <FInclSubDirs>0</FInclSubDirs>
 </ROLLBACK>
 <PRE_SCRIPT mode="1" replacementmode="1" state="1">
-<PSCRI><![CDATA[:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.PREPARE_JOB]]></PSCRI>
+<PSCRI><![CDATA[: INC PCK.ITPA_SHARED.PUB.INCLUDE.START_STOP_JOB_ACCORDING_TO_AGENT_OS]]></PSCRI>
 </PRE_SCRIPT>
 <SCRIPT mode="1" state="1">
-<MSCRI><![CDATA[! Read File & write file
+<MSCRI><![CDATA[@echo off
+!------------------------------------------ LOGGING INPUT PARAMETERS ------------------------------------------
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.PARAM_VALIDATION
+
+! Source Bundle Path
+: SET &UC4RB_LOGGING_PARAMETER# = "Source Bundle Path"
+: SET &UC4RB_LOGGING_PARAMETER_VAL# = "&UC4RB_APIM_SOURCE_BUNDLE#"
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.PARAM
+
+! Target Bundle Path
+: SET &UC4RB_LOGGING_PARAMETER# = "Target Bundle Path"
+: SET &UC4RB_LOGGING_PARAMETER_VAL# = "&UC4RB_APIM_TARGET_BUNDLE#"
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.PARAM
+
+
+! logging start of execution
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.EXECUTION
+
+!-----------------------------------------------------------------------------------------------------------------
+
+! Read File & write file
 : SET &FLAG# = 0
 : SET &START_TOKEN# = "<l7:Bundle>"
 : SET &END_TOKEN# = "</l7:Bundle>"
 : SET &PROCESS_FILE_TOKEN# = '<l7:Bundle xmlns:l7="http://ns.l7tech.com/2010/04/gateway-management">'
 : PSET &FILE_NAME# = &UC4RB_APIM_TARGET_BUNDLE#
-:SET &HND# = PREP_PROCESS_FILE(WIN01, &UC4RB_APIM_SOURCE_BUNDLE#)
+: SET &HND# = PREP_PROCESS_FILE(&AGENT#, &UC4RB_APIM_SOURCE_BUNDLE#)
 :    SET &HND1# = CREATE_PROCESS(NEW)
 
 : PROCESS &HND#
@@ -142,11 +162,10 @@
 
 :   IF &LINE# EQ &END_TOKEN#
 :     SET &FLAG# = 0
-:          SET &RET# = WRITE_PROCESS(&HND1#,&FILE_NAME#,WIN01,LOGIN.WIN01,OVERWRITE)
-:    IF &RET# <> 0
-:      PRINT "Error in writing file to path : &FILE_NAME#"
-:    ENDIF
-
+:     SET &RET# = WRITE_PROCESS(&HND1#,&FILE_NAME#,&AGENT#,&LOGIN#,OVERWRITE)
+:     IF &RET# <> 0
+:        PRINT "Error in writing file to path : &FILE_NAME#"
+:     ENDIF
 :   ENDIF
 :ENDPROCESS
 : CLOSE_PROCESS &HND#
@@ -163,14 +182,11 @@
 :SET &VAR# = 1
 :SET &LEN# = LENGTH(&TOKENS#[])
 :WHILE &VAR# LE &LEN#
-: p "lEN :  &LEN#"
 :   SET &NODE# = ""
 :   SET &START_TOKEN# = &TOKENS#[&VAR#]
 :   SET &START_TOKEN# = STR_TRIM(&START_TOKEN#)
 :   SET &END_TOKEN# = STR_SUB(&START_TOKEN#, "<", "</")
-: P  "START_TOKEN :&START_TOKEN#"
-:  P  "END_TOKEN :&END_TOKEN#"
-:   SET &HND# = PREP_PROCESS_FILE(WIN01, &FILE_NAME#)
+:   SET &HND# = PREP_PROCESS_FILE(&AGENT#, &FILE_NAME#)
 :   SET &HND1# = CREATE_PROCESS(NEW)
 
 :   PROCESS &HND#
@@ -180,26 +196,31 @@
 :     SET &FLAG# = 1
 :    ENDIF
 :    IF &FLAG# EQ 1
-!:      PRINT "&LINE#"
 :      SET &NODE# = STR_CAT(&NODE#,"&LINE#")
 :    ELSE
 :      SET &RET# = PUT_PROCESS_LINE(&HND1#, &LINE#)
 :   ENDIF
 :   IF &LINE# EQ &END_TOKEN#
 :     SET &FLAG# = 0
-: p " Node :&NODE#"
 :     SET &RET# = PUT_PROCESS_LINE(&HND1#, &NODE#)
 :     SET &NODE# = ""
 :    ENDIF
 :   ENDPROCESS
 :   CLOSE_PROCESS &HND#
-:   SET &RET# = WRITE_PROCESS(&HND1#,&FILE_NAME#,WIN01,LOGIN.WIN01,OVERWRITE)
+:   SET &RET# = WRITE_PROCESS(&HND1#,&FILE_NAME#,&AGENT#,&LOGIN#,OVERWRITE)
 :    IF &RET# <> 0
 :      PRINT "Error in writing file to path : &FILE_NAME#"
 :    ENDIF
 :   CLOSE_PROCESS &HND1#
 :   SET &VAR# = &VAR#+ 1
 : ENDWHILE
+
+! Status messages
+: SET &UC4RB_LOGGING_INFO# = "******** PREPARE BUNDLE FOR IMPORT JOB EXECUTED SUCCESSFULLY ********"
+: SET &UC4RB_LOGGING_ERROR# = "******** PREPARE BUNDLE FOR IMPORT JOB ACTION FAILED ********"
+!------------------------------------------ Error Handling -----------------------------------------------------------------------------------------------------
+
+: INC PCK.AUTOMIC_CA_APIM.PRV.INCLUDE.CHECK_JOBSTATUS
 ]]></MSCRI>
 </SCRIPT>
 <OUTPUTSCAN state="1">
