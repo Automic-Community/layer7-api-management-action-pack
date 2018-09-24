@@ -370,17 +370,15 @@ This action is used to prepare policy export file so that it can be imported int
 
 
 = Failure Conditions =
--If provided source bundle path is not a valid XML file.
--If provided source bundle path does not exist.
+-If the provided source bundle path does not exist.
 
 = Inputs =
-- Source Bundle Path*:                   Provide name of the source bundle with the full path to be prepared for import.
-- Target Bundle Path*:                   Provide name of the target bundle with full path.
+- Source Bundle Path*:                   Provide the name of the source bundle with the full path to be prepared for import.
+- Target Bundle Path*:                   Provide the name of the target bundle with full path.
 
 
 = Behavior =
 * The action will Prepare a Bundle required for import policy. 
-
 
 =Return Value=
 UC4RB_APIM_TARGET_PATH: Full filename with path of the Target Bundle get published.
