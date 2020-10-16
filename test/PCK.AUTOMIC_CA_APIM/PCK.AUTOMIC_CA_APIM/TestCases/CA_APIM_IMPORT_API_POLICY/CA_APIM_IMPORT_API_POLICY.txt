@@ -1,0 +1,62 @@
+*** Settings ***
+Suite Setup       Startup
+Suite Teardown    Teardown
+Force Tags        CA_APIM_IMPORT_API_POLICY
+Test Template     Import Policy Job Template
+Library           com.automic.robot.itpa.ItpaLibrary
+Library           String
+Library           DateTime
+Resource          ../../Resources/messages.txt
+Resource          ../../Resources/keywords.txt
+Resource          ../../Resources/variables.txt
+Resource          ../../Resources/actions.txt
+
+*** Test Cases ***    OK_NOK    BundlePath        L7Key       TestImport    Activate    Comment
+Import API Policy with all valid data
+                      [Tags]    main_scenarios
+                      OK        ${BundlePath}     ${L7Key}    No            No          ${Comment}
+
+Import API Policy with Empty BundlePath
+                      NOK       ${Empty}          ${L7Key}    No            No          ${Comment}
+
+Import API Policy with Empty L7 Key
+                      OK        ${BundlePath}     ${Empty}    No            No          ${Comment}
+
+Import API Policy with TestImport as Yes
+                      OK        ${BundlePath}     ${L7Key}    Yes           No          ${Comment}
+
+Import API Policy with invalid BundlePath
+                      NOK       Invalid           ${L7Key}    Yes           Yes         ${Comment}
+
+Import API Policy with Activate as Yes
+                      OK        ${BundlePath}     ${L7Key}    Yes           Yes         ${Comment}
+
+*** Keywords ***
+Startup
+    Log    *******Start Test "Import Policy"*******
+    Log    *******Connect to AE*******
+    Connect AE
+
+Import Policy Job Template
+    [Arguments]    ${OK_NOK}    ${BundlePath}    ${L7Key}    ${TestImport}    ${Activate}    ${Comment}
+    [Documentation]    This test tests the feature of Import API Policy.
+    ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK. Value of this variable should be OK or NOK.
+    ...    -${BundlePath}: This field specifies policy BundlePath to be Imported.
+    ...    -${L7Key}: This field specifies the base64 encoded passphrase to use for the encryption key when encrypting secrets.
+    ...    -${TestImport}: This field specifies whether whether if the bundle import will be tested before real import is done.
+    ...    -${Activate}: This field specifies whether if the updated services and policies should be activated.
+    ...    -${Comment}: This field specifies whether if Comment are also included.
+    Generate String
+    Init Action    ${_CA_APIM_IMPORT_ACTION}
+    Connect To CA_APIM
+    Run Keyword If    '${BundlePath}' == 'Invalid'    Action Set    &UC4RB_APIM_BUNDLE_PATH#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_APIM_BUNDLE_PATH#    ${BundlePath}
+    Action Set    &UC4RB_APIM_L7_KEY_PASSPHRASE#    ${L7Key}
+    Action Set    &UC4RB_APIM_TEST_IMPORT#    ${TestImport}
+    Action Set    &UC4RB_APIM_ACTIVATE_POLICY#    ${Activate}
+    Action Set    &UC4RB_APIM_COMMENT#    ${Comment}
+    Action Execute
+    Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success    ELSE    Assert Failure
+
+Teardown
+    Log    *******End Test "Import Policy"*******
