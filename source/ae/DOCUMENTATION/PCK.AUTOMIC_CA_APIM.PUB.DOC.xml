@@ -10,8 +10,6 @@
 <DOC><![CDATA[About the Package
 An action pack for CA APIM (Policy manager)that used to migrate any API from a gateway to other(one environment to another). 
 
-=Supported versions=
-CA APIM version 9.3.00
 
 =Setup=
 * This Action pack uses REST RA Agent. 
