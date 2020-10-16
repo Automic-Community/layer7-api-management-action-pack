@@ -23,7 +23,7 @@ This Action Pack for CA API Management helps you make APIs available in your var
 
 1. Automation Engine should be installed.
 2. Automic Package Manager should be installed.
-3  ITPA Shared and RA Rest action pack should be installed.
+3. ITPA Shared and RA Rest action pack should be installed.
 
 ###### Steps to install action pack source code:
 
